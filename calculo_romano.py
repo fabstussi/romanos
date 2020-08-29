@@ -29,13 +29,13 @@ class Calculos:
             self._resultado = self.v1 + self.v2
             return self._inteiro(self._resultado)
         elif self.s == '-':
-            self._resultado = self.v1 + self.v2
+            self._resultado = self.v1 - self.v2
             return self._inteiro(self._resultado)
         elif self.s == '*':
-            self._resultado = self.v1 + self.v2
+            self._resultado = self.v1 * self.v2
             return self._inteiro(self._resultado)
         elif self.s == '/':
-            self._resultado = self.v1 + self.v2
+            self._resultado = self.v1 / self.v2
             return self._inteiro(self._resultado)
         else:
             return f'Erro: {self.s} não pertence as 4 operações fundamentais '
