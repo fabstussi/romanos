@@ -1,6 +1,7 @@
 from romanos_para_inteiros import romano_para_inteiro as rpi
 from inteiros_para_romanos import inteiro_para_romano as ipr
 
+
 class Calculos:
 
     def __init__(self, calculo: str):
@@ -16,8 +17,9 @@ class Calculos:
                 self._v2 = (self._v2 + i)
             else:
                 self._s = i
-                self._v1 = self._caracter_inteiro(self._v2)
+                self._v1 = self._v2
                 self._v2 = ''
+        self._v1 = self._caracter_inteiro(self._v1)
         self._v2 = self._caracter_inteiro(self._v2)
         return self._v1, self._s, self._v2
     
@@ -39,17 +41,18 @@ class Calculos:
             return f'Erro: {self.s} não pertence as 4 operações fundamentais '
     
     def _caracter_inteiro(self, v: str) -> int:
-        print(v.isnumeric)
-        if v.isnumeric:
+        try:
             v = int(v)
-        else:
-            v = self.romano(v)
+        except ValueError:
+            v = self._romano(v)
         return v
 
+    @staticmethod
     def _romano(r: str) -> int:
-        v = rpi(r.upper())
+        v = rpi(r)
         return v
-    
+
+    @staticmethod
     def _inteiro(v: int) -> str:
         r = ipr(v)
         return r
