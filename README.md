@@ -15,4 +15,4 @@ Ex.: XXI
 
 Bônus, o sistema deve reconhecer se o usuário digitar números naturais e realizar a operação.
 Ex.: >>> 15+6
-     21
+     XXI
