@@ -17,7 +17,7 @@ def inteiro_para_romano(i: int) -> str:
         1000: 'M'
     }
     resp = ''
-    resto = valor_a_verificar = 0
+    # resto = valor_a_verificar = 0
     while i > 0:
         parametro_para_resto = 10**(len(str(i)) - 1)
         resto = abs(i % parametro_para_resto)
@@ -25,7 +25,8 @@ def inteiro_para_romano(i: int) -> str:
         if valor_a_verificar == parametro_para_resto:
             resp = (resp + romanos[parametro_para_resto])
         while valor_a_verificar > parametro_para_resto:
-            if valor_a_verificar == parametro_para_resto * 9 or valor_a_verificar == parametro_para_resto * 5 or valor_a_verificar == parametro_para_resto * 4:
+            if valor_a_verificar == parametro_para_resto * 9 or valor_a_verificar == parametro_para_resto * 5 \
+                    or valor_a_verificar == parametro_para_resto * 4:
                 resp = (resp + romanos[valor_a_verificar])
                 valor_a_verificar = parametro_para_resto
             elif valor_a_verificar > parametro_para_resto * 5:

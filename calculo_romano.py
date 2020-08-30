@@ -13,12 +13,14 @@ class Calculos:
         self._v2 = ''
         self._s = ''
         for i in self.calculo:
-            if not i in '+-*/':
+            if i not in '+-*/.:':
                 self._v2 = (self._v2 + i)
             else:
                 self._s = i
                 self._v1 = self._v2
                 self._v2 = ''
+        if self._s == '':
+            self._v2 = '0'
         self._v1 = self._caracter_inteiro(self._v1)
         self._v2 = self._caracter_inteiro(self._v2)
         return self._v1, self._s, self._v2
@@ -27,18 +29,15 @@ class Calculos:
         self.v1, self.s, self.v2 = self._desmonta_calculo(self._calculo)
         if self.s == '+':
             self._resultado = self.v1 + self.v2
-            return self._inteiro(self._resultado)
         elif self.s == '-':
             self._resultado = self.v1 - self.v2
-            return self._inteiro(self._resultado)
-        elif self.s == '*':
+        elif self.s in '*.':
             self._resultado = self.v1 * self.v2
-            return self._inteiro(self._resultado)
-        elif self.s == '/':
+        elif self.s in '/:':
             self._resultado = self.v1 / self.v2
-            return self._inteiro(abs(int(self._resultado)))
         else:
-            return f'Erro: {self.s} não pertence as 4 operações fundamentais '
+            self._resultado = 'Erro: não foi localizada operação matemática basica.'
+        return self._inteiro(abs(int(self._resultado)))
     
     def _caracter_inteiro(self, v: str) -> int:
         try:
