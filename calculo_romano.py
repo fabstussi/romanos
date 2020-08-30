@@ -11,7 +11,7 @@ class Calculos:
         self.calculo = calculo
         self._v1 = ''
         self._v2 = ''
-        self._s = ''
+        self._s = '!'
         for i in self.calculo:
             if i not in '+-*/.:':
                 self._v2 = (self._v2 + i)
@@ -19,8 +19,8 @@ class Calculos:
                 self._s = i
                 self._v1 = self._v2
                 self._v2 = ''
-        if self._s == '':
-            self._v2 = '0'
+        if self._s == '!':
+            self._v1 = '0'
         self._v1 = self._caracter_inteiro(self._v1)
         self._v2 = self._caracter_inteiro(self._v2)
         return self._v1, self._s, self._v2
@@ -36,7 +36,7 @@ class Calculos:
         elif self.s in '/:':
             self._resultado = self.v1 / self.v2
         else:
-            self._resultado = 'Erro: não foi localizada operação matemática basica.'
+            return 'Erro: não foi localizada operação matemática basica.'
         return self._inteiro(abs(int(self._resultado)))
     
     def _caracter_inteiro(self, v: str) -> int:
@@ -53,5 +53,8 @@ class Calculos:
 
     @staticmethod
     def _inteiro(v: int) -> str:
-        r = ipr(v)
+        if v < 3999:
+            r = ipr(v)
+        else:
+            r = 'Erro: o calculo não pode ser maior do que 3999'
         return r
