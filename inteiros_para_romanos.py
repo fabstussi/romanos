@@ -40,4 +40,6 @@ def inteiro_para_romano(i: int) -> str:
                 if valor_a_verificar == parametro_para_resto:
                     resp = (resp + romanos[parametro_para_resto])
         i = resto
+    if resp == '':
+        resp = 'Erro: algum dos dados não pode ser convertido para Romano'
     return resp
