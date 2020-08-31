@@ -57,4 +57,4 @@ class Calculos:
             r = ipr(v)
         else:
             r = 'Erro: o calculo não pode ser maior do que 3999'
-        return r
+        return f'{r} ({v})'
