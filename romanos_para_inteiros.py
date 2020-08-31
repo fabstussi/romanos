@@ -12,7 +12,3 @@ def romano_para_inteiro(s: str) -> int:
             resp -= romanos[valor]
     resp += romanos[s[len(s) - 1]]
     return resp
-
-
-if __name__ == '__main__':
-    print(romano_para_inteiro(x))
