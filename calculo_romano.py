@@ -8,36 +8,36 @@ class Calculos:
         self._calculo = calculo.upper().replace(' ', '')
 
     def _desmonta_calculo(self, calculo: str):
-        self.calculo = calculo
-        self._v1 = ''
-        self._v2 = ''
-        self._s = '!'
-        for i in self.calculo:
+        calculo = calculo
+        v1 = ''
+        v2 = ''
+        s = '!'
+        for i in calculo:
             if i not in '+-*/.:':
-                self._v2 = (self._v2 + i)
+                v2 = (v2 + i)
             else:
-                self._s = i
-                self._v1 = self._v2
-                self._v2 = ''
-        if self._s == '!':
-            self._v1 = '0'
-        self._v1 = self._caracter_inteiro(self._v1)
-        self._v2 = self._caracter_inteiro(self._v2)
-        return self._v1, self._s, self._v2
+                s = i
+                v1 = v2
+                v2 = ''
+        if s == '!':
+            v1 = '0'
+        v1 = self._caracter_inteiro(v1)
+        v2 = self._caracter_inteiro(v2)
+        return v1, s, v2
     
     def fazer_calculo(self):
-        self.v1, self.s, self.v2 = self._desmonta_calculo(self._calculo)
-        if self.s == '+':
-            self._resultado = self.v1 + self.v2
-        elif self.s == '-':
-            self._resultado = self.v1 - self.v2
-        elif self.s in '*.':
-            self._resultado = self.v1 * self.v2
-        elif self.s in '/:':
-            self._resultado = self.v1 / self.v2
+        v1, s, v2 = self._desmonta_calculo(self._calculo)
+        if s == '+':
+            resultado = v1 + v2
+        elif s == '-':
+            resultado = v1 - v2
+        elif s in '*.':
+            resultado = v1 * v2
+        elif s in '/:':
+            resultado = v1 / v2
         else:
             return 'Erro: não foi localizada operação matemática basica.'
-        return self._inteiro(abs(int(self._resultado)))
+        return self._inteiro(abs(int(resultado)))
     
     def _caracter_inteiro(self, v: str) -> int:
         try:
